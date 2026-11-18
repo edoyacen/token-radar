@@ -7,6 +7,7 @@
 //   MAKEFUN_OUTPUT_DIR=out node main.ts --input ../input/snapshot.json
 
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -48,6 +49,14 @@ if (broken !== null) {
   process.stderr.write(`token radar: the board fails the gate: ${broken}\n`);
   process.exit(1);
 }
+
+// The seal: the board's own rows, hashed. The page shows it, so a reader can check that the table in
+// front of them is the table that was written.
+const seal = createHash('sha256')
+  .update(JSON.stringify(board.map((r) => [r.rank, r.slug, r.implied_value_usd])))
+  .digest('hex')
+  .slice(0, 12);
+radar.seal = seal;
 
 writeFileSync(join(outputRoot, 'board.json'), `${JSON.stringify({ rows: board })}\n`);
 writeFileSync(join(outputRoot, 'data.js'), dataScript(radar));
@@ -93,5 +102,7 @@ process.stdout.write(
   `token radar: ${snapshot.protocols.length} protocols, ${snapshot.watchlist.length} on the watchlist, ` +
     `${board.length} ranked; rank 1 is ${top?.name ?? 'nobody'} at ${top?.implied_value_usd ?? 0} USD, ` +
     `rank ${last?.rank ?? 0} is ${last?.name ?? 'nobody'}\n` +
+    `token radar: hold-out ${radar.calibration.samples} live tokens, median miss x${radar.calibration.miss_p50}, ` +
+    `${radar.calibration.within_2x} within x2; seal ${seal}\n` +
     `token radar: /output holds board.json, data.js, dashboard/, ${shots.length} screenshots and dossier.json\n`,
 );
