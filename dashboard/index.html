@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by what their launch would be worth</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <div>
+      <h1>Token Radar</h1>
+      <p class="sub" id="sub">Protocols that still record no token, ranked by what their launch would be worth</p>
+    </div>
+  </div>
+  <dl class="meta" id="meta"></dl>
+</header>
+
+<section class="kpis" id="kpis" aria-label="Summary"></section>
+
+<section class="controls" aria-label="Filters">
+  <label class="search">
+    <span>Search</span>
+    <input id="q" type="search" placeholder="protocol, category or chain" autocomplete="off">
+  </label>
+  <label class="select">
+    <span>Chain</span>
+    <select id="chain"></select>
+  </label>
+  <label class="range">
+    <span>Minimum TVL <output id="tvlOut"></output></span>
+    <input id="tvl" type="range" min="0" max="100" value="0">
+  </label>
+  <button id="reset" class="reset" type="button">Reset</button>
+  <div class="chips" id="cats" role="group" aria-label="Category"></div>
+</section>
+
+<main class="layout">
+  <section class="board" aria-labelledby="boardTitle">
+    <div class="boardHead">
+      <h2 id="boardTitle">The board</h2>
+      <p id="count" class="count"></p>
+    </div>
+    <div class="tableWrap">
+      <table id="table">
+        <thead>
+          <tr>
+            <th class="num">#</th>
+            <th class="sortable" data-k="name">Protocol</th>
+            <th class="sortable" data-k="tvl_usd" data-num="1">TVL</th>
+            <th class="sortable" data-k="change_7d" data-num="1">7d</th>
+            <th class="sortable" data-k="implied_value_usd" data-num="1">Implied launch value</th>
+            <th class="sortable" data-k="multiple" data-num="1">×TVL</th>
+            <th class="sortable" data-k="age_days" data-num="1">Tracked</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <aside class="drawer" id="drawer" aria-live="polite"></aside>
+</main>
+
+<footer class="foot" id="foot"></footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
