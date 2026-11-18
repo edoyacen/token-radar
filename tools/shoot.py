@@ -11,7 +11,7 @@ import shutil
 import subprocess
 
 CHROME = r"C:/Program Files/Google/Chrome/Application/chrome.exe"
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(HERE, "out")
 WORK = os.path.join(HERE, "shotwork")
 SHOTS = os.path.join(HERE, "screenshots")
@@ -20,8 +20,8 @@ TALL = 3000
 # (name, hash route, top of the 1440x900 window in the tall capture)
 PLAN = [
     ("1-board.png", "", 0),
-    ("2-detail.png", "#detail=steakhouse-financial&dep=1500", 1420),
-    ("3-filtered.png", "#v=FARM&dep=500", 1420),
+    ("2-detail.png", "#detail=steakhouse-financial&dep=1500", 330),
+    ("3-evidence.png", "#v=FARM&dep=500", 330),
 ]
 
 

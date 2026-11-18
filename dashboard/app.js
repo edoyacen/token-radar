@@ -240,6 +240,9 @@
 
   const draw = () => {
     const list = view();
+    $('thesis').innerHTML = 'Every row prices a launch from the protocol’s own TVL, its category, its week and its age. ' +
+      'The <b>call</b> asks a different question: what <b>' + usd(state.dep) + '</b> of your own money is worth after the odds ' +
+      'that a token appears at all, and after the gas of the farm plan.';
     $('count').textContent = list.length + ' of ' + rows.length + ' rows' +
       (state.v !== 'ALL' ? ' · ' + state.v : '') + (state.cat ? ' · ' + state.cat : '') +
       (state.chain ? ' · ' + state.chain : '') + (state.minTvl ? ' · TVL ≥ ' + usd(state.minTvl) : '') +
@@ -280,6 +283,8 @@
     const drawer = $('drawer');
     drawer.innerHTML =
       '<h3>' + r.name + '</h3>' +
+      '<div class="bigcall"><span class="n ' + (c.net > 0 ? 'pos' : 'neg') + '">' + money(c.net) + '</span>' +
+      '<span class="u">expected net on ' + usd(state.dep) + ' · <b>' + c.verdict + '</b></span></div>' +
       '<p class="where">Rank ' + r.rank + ' of ' + D.board_size + ' · ' + (r.category || 'Uncategorised') + ' · tracked since ' + month(r.listed_at) + '</p>' +
       '<p><span class="badge">' + usd(r.tvl_usd) + ' TVL</span><span class="badge">' + usd(r.implied_value_usd) + ' implied</span>' +
       '<span class="badge">' + r.multiple.toFixed(1) + '% of TVL</span><span class="badge">' + (r.chains || []).length + ' chains</span>' +

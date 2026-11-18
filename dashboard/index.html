@@ -50,21 +50,7 @@
   <div class="chips" id="cats" role="group" aria-label="Category"></div>
 </section>
 
-<section class="evidence" id="evidence" aria-label="Evidence">
-  <div class="evHead">
-    <h2>What the snapshot can prove about the model</h2>
-    <p>Three questions, answered from the sealed snapshot itself: how wrong the model is, how often a token
-      appears at all, and where every protocol in the snapshot went.</p>
-  </div>
-  <div class="evGrid">
-    <article class="panel" id="calPanel"></article>
-    <article class="panel" id="abPanel"></article>
-    <article class="panel chart" id="histPanel"></article>
-    <article class="panel chart" id="scatterPanel"></article>
-    <article class="panel" id="ledgerPanel"></article>
-    <article class="panel" id="oddsPanel"></article>
-  </div>
-</section>
+
 
 <main class="layout">
   <section class="board" aria-labelledby="boardTitle">
@@ -72,6 +58,7 @@
       <h2 id="boardTitle">The board</h2>
       <p id="count" class="count"></p>
     </div>
+    <p class="thesis" id="thesis"></p>
     <div class="tableWrap">
       <table id="table">
         <thead>
@@ -94,6 +81,22 @@
 
   <aside class="drawer" id="drawer" aria-live="polite"></aside>
 </main>
+
+<section class="evidence" id="evidence" aria-label="Evidence">
+  <div class="evHead">
+    <h2>What the snapshot can prove about the model</h2>
+    <p>Three questions, answered from the sealed snapshot itself: how wrong the model is, how often a token
+      appears at all, and where every protocol in the snapshot went.</p>
+  </div>
+  <div class="evGrid">
+    <article class="panel" id="calPanel"></article>
+    <article class="panel" id="abPanel"></article>
+    <article class="panel chart" id="histPanel"></article>
+    <article class="panel chart" id="scatterPanel"></article>
+    <article class="panel" id="ledgerPanel"></article>
+    <article class="panel" id="oddsPanel"></article>
+  </div>
+</section>
 
 <footer class="foot" id="foot"></footer>
 <script src="../data.js"></script>
